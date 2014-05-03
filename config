@@ -1,8 +1,11 @@
 #cloud-config
 
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDiL720zNrQXPhapS8Jehzyt2+qO2BErQy+QYx9MhQbZr+8FL8r2dno5f0GKx3NmmTF0ljI/tweyzd/nLqGJmV5ShMDkOZap3co61g/enaLaGcM8B5dld4MWvM3Y4sPCvb4JolltSI6iXiTYLis+NJ6pUjxVkqbTdn9FC1HRsYzotZ5tM94AZr8rvNY8o68IlqWNUFIvIbHHTzBFe1tFy2cOJDxVhzBw6AlHPse7SWbK/qWxr+Feai/46ahisEtO/cmyg951k8w+j7sj7BL8WwO0cbv31LpdG8Fr+SesbU6A1ii2Mv5AFWlADZj7cDdkhVq4fRimmlMKFZFH9L/4JhD
+
 users:
   - name: guy
-      coreos-ssh-import-github: #GITHUBUSER
+      coreos-ssh-import-github: domabo
       sudo: ALL=(ALL) NOPASSWD:ALL
       groups: users, admin, sudo, docker
       lock-passwd: true
@@ -10,7 +13,7 @@ users:
 coreos:
   etcd:
       #generate a new token for each unique cluster from https://discovery.etcd.io/new
-      discovery: https://discovery.etcd.io/<TOKEN>
+      discovery: https://discovery.etcd.io/abbd205fbd28a6460f9df458f4d08dfd
       addr: $public_ipv4:4001
       peer-addr: $public_ipv4:7001
   units:

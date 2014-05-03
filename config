@@ -19,10 +19,9 @@ coreos:
         [Service]
         Environment=FLEET_PUBLIC_IP=$public_ipv4
         ExecStart=/usr/bin/fleet
-
-users:
-  - name: guy
-    coreos-ssh-import-github: domabo
-    sudo: ALL=(ALL) NOPASSWD:ALL
-    groups: users, admin, sudo, docker
-    lock-passwd: true
+  users:
+    - name: guy
+      coreos-ssh-import-github: domabo
+      sudo: ALL=(ALL) NOPASSWD:ALL
+      groups: users, admin, sudo, docker
+      lock-passwd: true

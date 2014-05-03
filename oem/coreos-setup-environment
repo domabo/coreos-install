@@ -8,10 +8,10 @@ if [ -z "$ENV" ]; then
 fi
 
 # just wait for interfaces to be ready
-ifaces=`ifconfig | grep enp0 | cut -f1 -d: | tr "\n" " "`
+ifaces=`ifconfig | grep ens3 | cut -f1 -d: | tr "\n" " "`
 while [ -z "$ifaces" ]; do
     sleep 0.1
-    ifaces=`ifconfig | grep enp0 | cut -f1 -d: | tr "\n" " "`
+    ifaces=`ifconfig | grep ens3 | cut -f1 -d: | tr "\n" " "`
 done
 
 ifaces=($ifaces)
@@ -23,7 +23,7 @@ fi
 ipaddr=`ifconfig ${ifaces[1]} | grep 'inet ' | sed 's/^ *//' | cut -f 2 -d ' '`
 while [ -z "$ipaddr" ]; do
     sleep 0.1
-    ifaces=`ifconfig | grep enp0 | cut -f1 -d: | tr "\n" " "`
+    ifaces=`ifconfig | grep ens3 | cut -f1 -d: | tr "\n" " "`
     ifaces=($ifaces)
     ipaddr=`ifconfig ${ifaces[1]} | grep 'inet ' | sed 's/^ *//' | cut -f 2 -d ' '`
 done

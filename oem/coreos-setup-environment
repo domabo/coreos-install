@@ -23,5 +23,9 @@ while [ -z "$ipaddr" ]; do
     ipaddr=`ifconfig ${ifaces} | grep 'inet ' | sed 's/^ *//' | cut -f 2 -d ' '`
 done
 
+sed -i -e '/^COREOS_PUBLIC_IPV4=/d' \
+    -e '/^COREOS_PRIVATE_IPV4=/d' \
+    "${ENV}"
+
 echo "COREOS_PUBLIC_IPV4=${ipaddr}" >> $ENV
 echo "COREOS_PRIVATE_IPV4=${ipaddr}" >> $ENV

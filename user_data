@@ -7,15 +7,15 @@ users:
   - name: guy
     coreos-ssh-import-github: domabo
     sudo: ALL=(ALL) NOPASSWD:ALL
-    groups: users, admin, sudo, docker
+    groups: users, sudo
     lock-passwd: true
 
 coreos:
   etcd:
       #generate a new token for each unique cluster from https://discovery.etcd.io/new
-      discovery: https://discovery.etcd.io/869744ee9341402305ec042bbf59be65
-      addr: $private_ipv4:4001
-      peer-addr: $private_ipv4:7001
+      discovery: https://discovery.etcd.io/5e2de2f4731b7b66df8252d786108847
+      addr: 192.73.233.85:4001
+      peer-addr: 192.73.233.85:7001
   units:
     - name: etcd.service
       command: start
@@ -26,5 +26,5 @@ coreos:
         Description=fleet
 
         [Service]
-        Environment=FLEET_PUBLIC_IP=$public_ipv4
+        Environment=FLEET_PUBLIC_IP=192.73.233.85
         ExecStart=/usr/bin/fleet

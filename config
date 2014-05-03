@@ -1,10 +1,16 @@
 #cloud-config
 
+users:
+  - name: guy
+      coreos-ssh-import-github: domabo
+      sudo: ALL=(ALL) NOPASSWD:ALL
+      groups: users, admin, sudo, docker
+      lock-passwd: true
 
 coreos:
   etcd:
       #generate a new token for each unique cluster from https://discovery.etcd.io/new
-      discovery: https://discovery.etcd.io/104a58f36755bb1f717a635a27ad19de
+      discovery: https://discovery.etcd.io/0765e3122979a661646b761153d6a7be
       addr: $public_ipv4:4001
       peer-addr: $public_ipv4:7001
   units:

@@ -13,9 +13,9 @@ users:
 coreos:
   etcd:
       #generate a new token for each unique cluster from https://discovery.etcd.io/new
-      discovery: https://discovery.etcd.io/5e2de2f4731b7b66df8252d786108847
-      addr: 192.73.233.85:4001
-      peer-addr: 192.73.233.85:7001
+      discovery: https://discovery.etcd.io/96aaaaea6e1addbcc82308aa95be2429
+      addr: 127.0.0.1:4001
+      peer-addr: 127.0.0.1:7001
   units:
     - name: etcd.service
       command: start

@@ -13,11 +13,18 @@ users:
 coreos:
   etcd:
       #generate a new token for each unique cluster from https://discovery.etcd.io/new
-      #discovery: https://discovery.etcd.io/d5f1890ba17094bb8df020b89b8dc681
-      #addr: %COREOS_PUBLIC_IPV4%:4001
-      #peer-addr: %COREOS_PUBLIC_IPV4%:7001
+      discovery: https://discovery.etcd.io/869744ee9341402305ec042bbf59be65
+      addr: $private_ipv4:4001
+      peer-addr: $private_ipv4:7001
   units:
     - name: etcd.service
       command: start
     - name: fleet.service
       command: start
+      content: |
+        [Unit]
+        Description=fleet
+
+        [Service]
+        Environment=FLEET_PUBLIC_IP=$public_ipv4
+        ExecStart=/usr/bin/fleet

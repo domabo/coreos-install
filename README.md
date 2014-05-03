@@ -51,3 +51,21 @@ If cloud config doesn't handle something you need to do or the config file does 
 ```
 mount -o subvol=root /dev/vda9 /mnt/
 ```
+
+
+## Command line
+
+INSTALLING THE CLI TO CONTROL COREOS
+
+If you are on a Mac, you can install fleetctl and etcdctl natively to control your CoreOS clusters. Here is how:
+
+```
+$ brew install go etcdctl
+$ git clone https://github.com/coreos/fleet.git
+$ cd fleet
+$ ./build
+$ mv bin/fleetctl /usr/local/bin/
+ssh-add ~/.ssh/id_rsa
+```
+
+

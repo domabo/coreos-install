@@ -2,7 +2,7 @@
 
 ## Boot base system
 
-Boot System Rescue CD or similar
+Boot Arch Linux live CD or similar
 
 ## Install Script
 
@@ -15,6 +15,7 @@ The script is self-contained and located [on Github here](https://raw.github.com
 wget https://raw.githubusercontent.com/domabo/coreos-install/master/coreos-install
 chmod +x coreos-install
 wget https://raw.githubusercontent.com/domabo/coreos-install/master/config
+nano config
 coreos-install -d /dev/vda -V alpha -c ./config
 ```
 
@@ -45,8 +46,8 @@ coreos-install -d /dev/vda -c ./config
 
 ## Manual Tweaks
 
-If cloud config doesn't handle something you need to do or you just want to take a look at the root btrfs filesystem before booting your new install just mount the ninth partition:
+If cloud config doesn't handle something you need to do or the config file does not get created and you just want to take a look at the root btrfs filesystem before booting your new install just mount the ninth partition:
 
 ```
-mount -o subvol=root /dev/sda9 /mnt/
+mount -o subvol=root /dev/vda9 /mnt/
 ```

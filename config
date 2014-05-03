@@ -5,10 +5,10 @@ ssh_authorized_keys:
 
 users:
   - name: guy
-      coreos-ssh-import-github: domabo
-      sudo: ALL=(ALL) NOPASSWD:ALL
-      groups: users, admin, sudo, docker
-      lock-passwd: true
+    coreos-ssh-import-github: domabo
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin, sudo, docker
+    lock-passwd: true
 
 coreos:
   etcd:

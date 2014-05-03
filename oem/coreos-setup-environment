@@ -14,18 +14,13 @@ while [ -z "$ifaces" ]; do
     ifaces=`ifconfig | grep ens3 | cut -f1 -d: | tr "\n" " "`
 done
 
-ifaces=($ifaces)
-if [ -z "${ifaces[1]}" ]; then
-    exit 0
-fi
-
 # just block until the second interface is ready
-ipaddr=`ifconfig ${ifaces[1]} | grep 'inet ' | sed 's/^ *//' | cut -f 2 -d ' '`
+ipaddr=`ifconfig ${ifaces} | grep 'inet ' | sed 's/^ *//' | cut -f 2 -d ' '`
 while [ -z "$ipaddr" ]; do
     sleep 0.1
-    ifaces=`ifconfig | grep ens3 | cut -f1 -d: | tr "\n" " "`
+    ifaces=`ifconfig | grep ${ifaces} | cut -f1 -d: | tr "\n" " "`
     ifaces=($ifaces)
-    ipaddr=`ifconfig ${ifaces[1]} | grep 'inet ' | sed 's/^ *//' | cut -f 2 -d ' '`
+    ipaddr=`ifconfig ${ifaces} | grep 'inet ' | sed 's/^ *//' | cut -f 2 -d ' '`
 done
 
 echo "COREOS_PUBLIC_IPV4=${ipaddr}" >> $ENV

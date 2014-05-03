@@ -1,5 +1,9 @@
 # Installing CoreOS to Disk
 
+## Boot base system
+
+Boot System Rescue CD or similar
+
 ## Install Script
 
 This repository contains a simple installer that will destroy everything on the given target disk and install CoreOS.
@@ -8,13 +12,16 @@ Essentially it downloads an image, verifies it with gpg and then copies it bit f
 The script is self-contained and located [on Github here](https://raw.github.com/domabo/coreos-install/master/coreos-install "coreos-install").
 
 ```
-coreos-install -d /dev/sda
+wget https://raw.githubusercontent.com/domabo/coreos-install/master/coreos-install
+chmod +x coreos-install
+wget https://raw.githubusercontent.com/domabo/coreos-install/master/config
+coreos-install -d /dev/vda -V alpha -c ./config
 ```
 
 When running on CoreOS the install script will attempt to install the same version. If you want to ensure you are installing the latest available version use the `-V` option:
 
 ```
-coreos-install -d /dev/sda -V alpha
+coreos-install -d /dev/vda -V alpha
 ```
 
 For reference here are the rest of the `coreos-install` options:
@@ -32,7 +39,7 @@ Pass the config file to `coreos-install` via the `-c` option.  It automatically 
 It will be installed to `/var/lib/coreos-install/user_data` and evaluated on every boot.
 
 ```
-coreos-install -d /dev/sda -c ./config
+coreos-install -d /dev/vda -c ./config
 ```
 
 

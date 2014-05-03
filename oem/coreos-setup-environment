@@ -28,4 +28,4 @@ sed -i -e '/^COREOS_PUBLIC_IPV4=/d' \
     "${ENV}"
 
 echo "COREOS_PUBLIC_IPV4=${ipaddr}" >> $ENV
-echo "COREOS_PRIVATE_IPV4=${ipaddr}" >> $ENV
+echo "COREOS_PRIVATE_IPV4=127.0.0.1" >> $ENV

@@ -27,5 +27,5 @@ coreos:
         Description=fleet
 
         [Service]
-        Environment=FLEET_PUBLIC_IP=$public_ipv4
+        Environment=FLEET_PUBLIC_IP=192.73.233.85
         ExecStart=/usr/bin/fleet

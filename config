@@ -2,7 +2,7 @@
 
 users:
   - name: guy
-      coreos-ssh-import-github: domabo
+      coreos-ssh-import-github: #GITHUBUSER
       sudo: ALL=(ALL) NOPASSWD:ALL
       groups: users, admin, sudo, docker
       lock-passwd: true
@@ -10,7 +10,7 @@ users:
 coreos:
   etcd:
       #generate a new token for each unique cluster from https://discovery.etcd.io/new
-      discovery: https://discovery.etcd.io/0765e3122979a661646b761153d6a7be
+      discovery: https://discovery.etcd.io/<TOKEN>
       addr: $public_ipv4:4001
       peer-addr: $public_ipv4:7001
   units:
